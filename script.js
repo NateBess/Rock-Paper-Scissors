@@ -1,15 +1,13 @@
-
+/*  */
 function computerPlay() {
     randomNumber = Math.floor(Math.random()*3);
-    console.log(randomNumber);
-
     if (randomNumber === 0) {return 'rock';}
     else if (randomNumber === 1) {return 'paper';}
     else if (randomNumber === 2) {return 'scissors';}
     else {console.log("Error Occurred! Try Again!");}
 }
 
-
+/*  */
 function playRound(playerSelection, computerSelection) {
     let whoWon = null;
     if (playerSelection === computerSelection) {
@@ -46,12 +44,14 @@ function playRound(playerSelection, computerSelection) {
     return whoWon;
   }
 
+/*  */
 function playGame() {
     let playerScore = 0;
     let computerScore = 0;
 
     while (true){
-        let playerSelection = prompt("Enter 'rock, paper, or scissors");
+        let userInput = prompt("Enter 'rock, paper, or scissors");
+        let playerSelection = userInput.toLowerCase();
         let computerSelection = computerPlay();
         whoWon = playRound(playerSelection, computerSelection);
         if (whoWon === true) {
@@ -62,17 +62,18 @@ function playGame() {
         }
         console.log(`\nPlayer Score: ${playerScore}\nComputer Score: ${computerScore} \n`);
 
-        if (playerScore === 3) {
-            console.log("\nPlayer WON THE GAME!!!!")
-            break
+        if (playerScore >= 3) {
+            console.log("\nPlayer WON THE GAME!!!!"); 
+            break;
         }
-        if (computerScore === 3) {
-            console.log("\nComputer WON THE GAME!!!!")
-            break
+        else if (computerScore >= 3) {
+            console.log("\nComputer WON THE GAME!!!!"); 
+            break;
         }
     }
 }
 
-playGame()
+// This will start the game...
+playGame();
 
 
